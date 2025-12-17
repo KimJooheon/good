@@ -36,6 +36,35 @@
             /* 푸터 높이에 맞게 조정 */
         }
     </style>
+    
+    <style>
+        /* 체크박스 본체는 숨기고 라벨이 클릭을 대신 받게 합니다 */
+        .list-group-checkable .list-group-item-check {
+            position: absolute;
+            clip: rect(0, 0, 0, 0);
+            pointer-events: none;
+        }
+        
+        /* 마우스 커서를 손가락 모양으로 변경 */
+        .list-group-checkable .list-group-item {
+            cursor: pointer;
+            border: 1px solid rgba(0,0,0,.125);
+        }
+
+        /* 클릭(체크) 되었을 때의 색상 변화 */
+        .list-group-item-check:checked + .list-group-item {
+            color: #fff;
+            background-color: #0d6efd; /* 부트스트랩 기본 파란색 */
+            border-color: #0d6efd;
+        }
+
+        /* 비활성화 상태 스타일 */
+        .list-group-item-check[disabled] + .list-group-item {
+            pointer-events: none;
+            filter: none;
+            opacity: .5;
+        }
+        </style>
     <script>
         // iframe 높이 자동 조절
         function resizeIframe(iframe) {
@@ -57,6 +86,29 @@
 
                 <!-- heon 2025.12.11 : 즐겨찾기 영역 -->
                  <div class="myd-flex justify-content-center ">
+                
+                <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+                    <div class="list-group list-group-checkable d-grid gap-2 border-0" style="width: 400px;">
+                        
+                        <input class="list-group-item-check" type="radio" name="listGroupCheckableRadios" id="listGroupCheckableRadios1" value="" checked>
+                        <label class="list-group-item rounded-3 py-3" for="listGroupCheckableRadios1">
+                        통합 민원 예약
+                        <span class="d-block small opacity-50">상세 설명 텍스트입니다.</span>
+                        </label>
+
+                        <input class="list-group-item-check" type="radio" name="listGroupCheckableRadios" id="listGroupCheckableRadios2" value="">
+                        <label class="list-group-item rounded-3 py-3" for="listGroupCheckableRadios2">
+                        정보공개/개방
+                        <span class="d-block small opacity-50">두 번째 항목 설명입니다.</span>
+                        </label>
+
+                        <input class="list-group-item-check" type="radio" name="listGroupCheckableRadios" id="listGroupCheckableRadios4" value="" disabled>
+                        <label class="list-group-item rounded-3 py-3" for="listGroupCheckableRadios4">
+                        수원소개 (비활성)
+                        <span class="d-block small opacity-50">이 옵션은 선택할 수 없습니다.</span>
+                        </label>
+                    </div>
+                </div>
                 
                 <!-- 버튼 4개 카드 -->
                 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
